@@ -3,23 +3,357 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tran Quang Chung — Indie Mobile Games</title>
+  <title>Tran Quang Chung — Indie Mobile Game Studio</title>
+  <meta name="description" content="Official game studio portal of Tran Quang Chung — creator of Harbor Cargo Jam and casual 3D puzzle games on the App Store and Google Play." />
+  <link rel="icon" href="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0d/7d/6b/0d7d6bab-e6b6-e0aa-8e64-cb21149e7466/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" />
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; max-width: 680px; margin: 48px auto; padding: 0 20px; line-height: 1.6; }
-    .card { background: #ffffff; border-radius: 16px; padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); margin-bottom: 20px; }
-    h1 { margin-top: 0; font-size: 26px; }
-    a { color: #2563eb; text-decoration: none; font-weight: 600; }
-    a:hover { text-decoration: underline; }
+    :root {
+      --bg-top: #07192f;
+      --bg-mid: #0c2d4d;
+      --card: rgba(15, 38, 68, 0.88);
+      --border: rgba(125, 211, 252, 0.2);
+      --accent: #fbbf24;
+      --cyan: #38bdf8;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(circle at 50% 0%, #134e7a 0%, var(--bg-top) 65%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #38bdf8, #0284c7);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 20px;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.35);
+    }
+    .brand h1 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+    }
+    .brand p {
+      margin: 2px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 14px;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      transition: all 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: #fff;
+      border-color: var(--cyan);
+      background: rgba(56, 189, 248, 0.14);
+    }
+    .hero-card {
+      margin-top: 32px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+    .hero-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+    }
+    .app-icon {
+      width: 108px;
+      height: 108px;
+      border-radius: 24px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+      flex-shrink: 0;
+    }
+    .hero-info {
+      flex: 1;
+      min-width: 240px;
+    }
+    .pill {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #082f49;
+      background: var(--accent);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .hero-info h2 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      line-height: 1.2;
+    }
+    .hero-info p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(180deg, #38bdf8, #0284c7);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 8px 22px rgba(2, 132, 199, 0.4);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 11px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+    }
+    .shots-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .shots-grid img {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+      display: block;
+    }
+    .section-title {
+      margin: 40px 0 16px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .game-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+    .game-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--cyan);
+    }
+    .game-item img {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      flex-shrink: 0;
+    }
+    .game-item h3 {
+      margin: 0 0 4px;
+      font-size: 16px;
+    }
+    .game-item span {
+      font-size: 13px;
+      color: var(--cyan);
+      font-weight: 600;
+    }
+    .info-grid {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+    .info-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+    }
+    .info-box h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      color: var(--accent);
+    }
+    .info-box p {
+      margin: 6px 0;
+      font-size: 14.5px;
+      color: var(--muted);
+    }
+    .info-box a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer {
+      margin-top: 44px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+    footer a { color: var(--cyan); text-decoration: none; }
+    @media (max-width: 720px) {
+      .shots-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-card { padding: 22px; }
+      .hero-info h2 { font-size: 24px; }
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Tran Quang Chung — Mobile Games</h1>
-    <p>Official developer homepage, support portal, and authorized seller verification (<a href="/app-ads.txt">app-ads.txt</a>).</p>
-    <ul>
-      <li><strong>Harbor Cargo Jam</strong> — <a href="https://apps.apple.com/app/id6835028695">View on the App Store</a></li>
-      <li><a href="https://sites.google.com/view/harborgamejam">Support &amp; Privacy Policy</a></li>
-    </ul>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="brand-badge">TC</div>
+        <div>
+          <h1>Tran Quang Chung</h1>
+          <p>Indie Mobile Game Developer &amp; Publisher</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="https://apps.apple.com/us/developer/tran-quang-chung/id6835028697" target="_blank" rel="noopener">App Store Portfolio</a>
+        <a href="https://sites.google.com/view/harborgamejam" target="_blank" rel="noopener">Privacy &amp; Support</a>
+        <a href="mailto:tranchung2k@gmail.com">tranchung2k@gmail.com</a>
+        <a href="/app-ads.txt">app-ads.txt</a>
+      </nav>
+    </header>
+
+    <section class="hero-card">
+      <div class="hero-top">
+        <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0d/7d/6b/0d7d6bab-e6b6-e0aa-8e64-cb21149e7466/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Harbor Cargo Jam Icon" />
+        <div class="hero-info">
+          <span class="pill">Featured Release</span>
+          <h2>Harbor Cargo Jam</h2>
+          <p>Unjam the busy sunset harbor! Guide colorful vessels out of tricky waterway jams, summon the VIP Pirate Octopus to the rescue, and load matching cargo crates across 100+ brain-teasing 3D dock puzzles.</p>
+          <div class="cta-row">
+            <a class="btn-primary" href="https://apps.apple.com/us/app/harbor-cargo-jam/id6835028695" target="_blank" rel="noopener">Download on the App Store</a>
+            <a class="btn-secondary" href="https://sites.google.com/view/harborgamejam" target="_blank" rel="noopener">Player Support &amp; Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="shots-grid">
+        <img src="assets/shot1.jpg" alt="VIP Octopus Rescue Gameplay" loading="lazy" />
+        <img src="assets/shot2.jpg" alt="Solve Tricky Harbor Jams Gameplay" loading="lazy" />
+        <img src="assets/shot3.jpg" alt="Match Boats By Color Gameplay" loading="lazy" />
+        <img src="assets/shot4.jpg" alt="Train Your Brain Gameplay" loading="lazy" />
+      </div>
+    </section>
+
+    <div id="more-games-wrap" style="display:none;">
+      <h2 class="section-title">All Published Titles</h2>
+      <div id="catalog-grid" class="catalog-grid"></div>
+    </div>
+
+    <section class="info-grid">
+      <div class="info-box">
+        <h3>Developer &amp; Business Contact</h3>
+        <p><strong>Publisher / Legal Entity:</strong> Tran Quang Chung</p>
+        <p><strong>Official Developer Email:</strong> <a href="mailto:tranchung2k@gmail.com">tranchung2k@gmail.com</a></p>
+        <p>For player support, business inquiries, or ad network verification, please reach out via email above.</p>
+      </div>
+      <div class="info-box">
+        <h3>Privacy &amp; Authorized Sellers</h3>
+        <p><strong>Privacy Policy:</strong> <a href="https://sites.google.com/view/harborgamejam" target="_blank" rel="noopener">View Official Privacy Policy</a></p>
+        <p><strong>IAB Authorized Digital Sellers:</strong> Verified via root <a href="/app-ads.txt">https://tranchungs.github.io/app-ads.txt</a> for all published titles on Apple App Store &amp; Google Play.</p>
+      </div>
+    </section>
+
+    <footer>
+      <span>&copy; 2026 Tran Quang Chung. All rights reserved.</span>
+      <span>Contact: <a href="mailto:tranchung2k@gmail.com">tranchung2k@gmail.com</a> &middot; <a href="/app-ads.txt">app-ads.txt</a></span>
+    </footer>
   </div>
+
+  <script>
+    window.__onItunesCatalog = function(data) {
+      if (!data || !Array.isArray(data.results)) return;
+      var apps = data.results.filter(function(r) { return r.wrapperType === 'software'; });
+      if (apps.length <= 1) return;
+      var grid = document.getElementById('catalog-grid');
+      var wrap = document.getElementById('more-games-wrap');
+      if (!grid || !wrap) return;
+      apps.forEach(function(app) {
+        var a = document.createElement('a');
+        a.className = 'game-item';
+        a.href = app.trackViewUrl || '#';
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.innerHTML = '<img src="' + (app.artworkUrl512 || app.artworkUrl100) + '" alt="" />' +
+          '<div><h3>' + app.trackName + '</h3><span>View on App Store &rarr;</span></div>';
+        grid.appendChild(a);
+      });
+      wrap.style.display = 'block';
+    };
+  </script>
+  <script src="https://itunes.apple.com/lookup?id=6835028697&entity=software&callback=__onItunesCatalog" async></script>
 </body>
 </html>
